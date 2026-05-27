@@ -10,15 +10,15 @@
   border: 1px solid var(--line);
   border-radius: 18px;
   background: var(--panel);
-  box-shadow: 0 20px 35px rgba(10, 60, 70, 0.06);
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.6);
   animation: rise 560ms ease-out both;
 }
 
 .hero {
   padding: clamp(24px, 4vw, 36px);
   background:
-    radial-gradient(1600px 420px at 0% -20%, rgba(42, 166, 179, 0.12), transparent 70%),
-    linear-gradient(120deg, rgba(240, 252, 255, 0.96), rgba(234, 246, 250, 0.9));
+    radial-gradient(1600px 420px at 0% -20%, rgba(255, 43, 43, 0.12), transparent 70%),
+    linear-gradient(120deg, rgba(10, 10, 10, 0.96), rgba(18, 18, 18, 0.9));
 }
 
 .eyebrow {
@@ -84,7 +84,7 @@
   width: 100%;
   border: 1px solid var(--line);
   border-radius: 10px;
-  background: rgba(245, 251, 255, 0.95);
+  background: rgba(18, 18, 18, 0.9);
   padding: 11px 12px;
   color: var(--text);
   font: inherit;
@@ -92,7 +92,7 @@
 
 .field input:focus,
 .field select:focus {
-  outline: 2px solid rgba(42, 166, 179, 0.2);
+  outline: 2px solid rgba(255, 43, 43, 0.18);
   outline-offset: 2px;
 }
 
@@ -105,14 +105,14 @@
   font: inherit;
   font-weight: 700;
   color: #fff;
-  background: linear-gradient(130deg, #2aa6b3, #4ccbe6);
+  background: linear-gradient(130deg, #ff2b2b, #b30000);
   cursor: pointer;
   transition: transform 140ms ease, box-shadow 140ms ease;
 }
 
 .generate-button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 10px 16px rgba(42, 166, 179, 0.18);
+  box-shadow: 0 10px 16px rgba(255, 43, 43, 0.18);
 }
 
 .stats-grid {
@@ -125,7 +125,7 @@
   border: 1px solid var(--line);
   border-radius: 12px;
   padding: 12px;
-  background: rgba(245, 251, 255, 0.72);
+  background: rgba(18, 18, 18, 0.72);
 }
 
 .stat-label {
@@ -178,7 +178,7 @@
   border: 1px solid var(--line);
   border-radius: 12px;
   padding: 12px;
-  background: rgba(245, 251, 255, 0.8);
+  background: rgba(18, 18, 18, 0.8);
 }
 
 .issue-card h3 {
@@ -198,7 +198,7 @@
   border: 1px solid var(--line);
   border-radius: 14px;
   overflow: hidden;
-  background: rgba(245, 251, 255, 0.8);
+  background: rgba(18, 18, 18, 0.8);
 }
 
 .meal-card img {

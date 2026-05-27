@@ -1,10 +1,10 @@
 :root {
-  --bg: #eaf6fb;
-  --panel: rgba(245, 252, 255, 0.94);
-  --line: rgba(24, 60, 74, 0.08);
-  --text: #052b34;
-  --muted: #5b7a81;
-  --accent: #2aa6b3;
+  --bg: #0a0a0a;
+  --panel: rgba(18, 18, 18, 0.92);
+  --line: rgba(225, 29, 36, 0.08);
+  --text: #ffffff;
+  --muted: #bfbfbf;
+  --accent: #ff2b2b;
   font-family: 'Sora', 'Avenir Next', 'Trebuchet MS', sans-serif;
   color: var(--text);
   font-weight: 400;
@@ -22,9 +22,9 @@ body {
   margin: 0;
   min-height: 100vh;
   background:
-    radial-gradient(600px 320px at 88% -10%, rgba(42, 166, 179, 0.08), transparent 70%),
-    radial-gradient(700px 380px at -5% 100%, rgba(90, 120, 130, 0.06), transparent 72%),
-    linear-gradient(180deg, #f0fbff 0%, #eaf6fb 100%);
+    radial-gradient(600px 320px at 88% -10%, rgba(255, 43, 43, 0.06), transparent 70%),
+    radial-gradient(700px 380px at -5% 100%, rgba(80, 20, 20, 0.04), transparent 72%),
+    linear-gradient(180deg, #000000 0%, #0a0a0a 100%);
 }
 
 #root {

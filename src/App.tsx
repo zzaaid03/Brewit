@@ -38,6 +38,24 @@ const defaultInput: BrewInput = {
 }
 
 const methodOptions: BrewMethod[] = ['V60', 'Kalita Wave', 'Chemex']
+const originOptions: string[] = [
+  'Ethiopia',
+  'Colombia',
+  'Brazil',
+  'Kenya',
+  'Guatemala',
+  'Costa Rica',
+  'Honduras',
+  'Panama',
+  'Indonesia',
+  'Rwanda',
+  'Tanzania',
+  'Nicaragua',
+  'Peru',
+  'El Salvador',
+  'Burundi',
+  'Yemen',
+]
 const roastOptions: RoastLevel[] = ['light', 'medium', 'dark']
 const processOptions: ProcessType[] = [
   'washed',
@@ -119,7 +137,7 @@ function App() {
       setInput((previous) => ({ ...previous, [field]: value }))
     }
 
-  const updateOrigin = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const updateOrigin = (event: React.ChangeEvent<HTMLSelectElement>): void => {
     setInput((previous) => ({ ...previous, origin: event.target.value }))
   }
 
@@ -188,12 +206,13 @@ function App() {
 
             <label className="field">
               <span>Bean Origin</span>
-              <input
-                type="text"
-                value={input.origin}
-                onChange={updateOrigin}
-                placeholder="e.g. Colombia Huila"
-              />
+              <select value={input.origin} onChange={updateOrigin}>
+                {originOptions.map((origin) => (
+                  <option key={origin} value={origin}>
+                    {origin}
+                  </option>
+                ))}
+              </select>
             </label>
 
             <label className="field">
