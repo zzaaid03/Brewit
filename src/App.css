@@ -1,0 +1,271 @@
+.app-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  gap: 16px;
+}
+
+.hero,
+.panel {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--panel);
+  box-shadow: 0 20px 35px rgba(10, 60, 70, 0.06);
+  animation: rise 560ms ease-out both;
+}
+
+.hero {
+  padding: clamp(24px, 4vw, 36px);
+  background:
+    radial-gradient(1600px 420px at 0% -20%, rgba(42, 166, 179, 0.12), transparent 70%),
+    linear-gradient(120deg, rgba(240, 252, 255, 0.96), rgba(234, 246, 250, 0.9));
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.hero h1 {
+  margin: 10px 0 12px;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  line-height: 1.08;
+  max-width: 17ch;
+}
+
+.hero-copy {
+  margin: 0;
+  max-width: 56ch;
+  color: var(--muted);
+}
+
+.layout {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.panel {
+  padding: clamp(16px, 3vw, 24px);
+}
+
+.panel h2 {
+  margin: 0 0 14px;
+  font-size: 1.3rem;
+}
+
+.panel h3 {
+  margin: 18px 0 10px;
+  font-size: 1.03rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.field span {
+  font-size: 0.86rem;
+  color: var(--muted);
+}
+
+.field input,
+.field select {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(245, 251, 255, 0.95);
+  padding: 11px 12px;
+  color: var(--text);
+  font: inherit;
+}
+
+.field input:focus,
+.field select:focus {
+  outline: 2px solid rgba(42, 166, 179, 0.2);
+  outline-offset: 2px;
+}
+
+.generate-button {
+  grid-column: 1 / -1;
+  border: none;
+  border-radius: 11px;
+  padding: 12px 16px;
+  margin-top: 4px;
+  font: inherit;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(130deg, #2aa6b3, #4ccbe6);
+  cursor: pointer;
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+.generate-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 16px rgba(42, 166, 179, 0.18);
+}
+
+.stats-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.stats-grid article {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px;
+  background: rgba(245, 251, 255, 0.72);
+}
+
+.stat-label {
+  margin: 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.stat-value {
+  margin: 6px 0 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.step-list,
+.notes-list {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+}
+
+.step-list li + li,
+.notes-list li + li {
+  margin-top: 10px;
+}
+
+.step-head {
+  margin: 0;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.step-list li p:last-child {
+  margin: 4px 0 0;
+}
+
+.issues-grid,
+.inspiration-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.issues-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.issue-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px;
+  background: rgba(245, 251, 255, 0.8);
+}
+
+.issue-card h3 {
+  margin: 0 0 6px;
+}
+
+.issue-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.inspiration-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.meal-card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(245, 251, 255, 0.8);
+}
+
+.meal-card img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+}
+
+.meal-content {
+  padding: 12px;
+}
+
+.meal-content h3 {
+  margin: 0;
+}
+
+.meal-content p {
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+
+.meal-content a {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.tags {
+  font-size: 0.83rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.layout .panel:nth-child(2) {
+  animation-delay: 80ms;
+}
+
+.issue-panel {
+  animation-delay: 150ms;
+}
+
+.inspiration-panel {
+  animation-delay: 220ms;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .layout,
+  .issues-grid,
+  .inspiration-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}

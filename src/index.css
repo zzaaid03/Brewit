@@ -1,0 +1,41 @@
+:root {
+  --bg: #eaf6fb;
+  --panel: rgba(245, 252, 255, 0.94);
+  --line: rgba(24, 60, 74, 0.08);
+  --text: #052b34;
+  --muted: #5b7a81;
+  --accent: #2aa6b3;
+  font-family: 'Sora', 'Avenir Next', 'Trebuchet MS', sans-serif;
+  color: var(--text);
+  font-weight: 400;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(600px 320px at 88% -10%, rgba(42, 166, 179, 0.08), transparent 70%),
+    radial-gradient(700px 380px at -5% 100%, rgba(90, 120, 130, 0.06), transparent 72%),
+    linear-gradient(180deg, #f0fbff 0%, #eaf6fb 100%);
+}
+
+#root {
+  min-height: 100vh;
+  padding: clamp(14px, 3vw, 28px);
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Fraunces', 'Iowan Old Style', 'Palatino Linotype', serif;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
