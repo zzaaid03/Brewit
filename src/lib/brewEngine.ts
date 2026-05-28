@@ -3,6 +3,7 @@ export type RoastLevel = 'light' | 'medium' | 'dark'
 export type ProcessType = 'washed' | 'natural' | 'honey' | 'anaerobic' | 'other'
 export type TasteGoal = 'balanced' | 'bright' | 'sweet' | 'bold'
 export type CupIssue = 'sour' | 'bitter' | 'weak' | 'dry'
+export type Experience = 'beginner' | 'amateur' | 'expert'
 
 export interface BrewInput {
   method: BrewMethod
@@ -10,9 +11,12 @@ export interface BrewInput {
   process: ProcessType
   roastLevel: RoastLevel
   tasteGoal: TasteGoal
-  doseGrams: number
-  ratio: number
-  waterTempC: number
+  // dose and ratio are optional — derived from experience/profile when omitted
+  doseGrams?: number
+  ratio?: number
+  // waterTempC is optional; when omitted the engine will compute an appropriate temp
+  waterTempC?: number
+  experience?: Experience
 }
 
 export interface PourStep {
@@ -227,27 +231,47 @@ function buildRoastGoalNote(roastLevel: RoastLevel, tasteGoal: TasteGoal): strin
 }
 
 export function generateRecipe(input: BrewInput): GeneratedRecipe {
-  const normalizedDose = clamp(input.doseGrams, 10, 40)
+  const experience: Experience = input.experience ?? 'amateur'
+
+  const profileDefaults: Record<Experience, { doseGrams: number; ratio: number }> = {
+    beginner: { doseGrams: 18, ratio: 16.5 },
+    amateur: { doseGrams: 20, ratio: 16 },
+    expert: { doseGrams: 20, ratio: 16 },
+  }
+
+  const experienceTempShift: Record<Experience, number> = {
+    beginner: 0.8,
+    amateur: 0,
+    expert: -0.8,
+  }
+
+  const baseDose = input.doseGrams ?? profileDefaults[experience].doseGrams
+  const normalizedDose = clamp(baseDose, 10, 40)
+
+  const baseRatio = input.ratio ?? profileDefaults[experience].ratio
   const adjustedRatio = roundToTenths(
-    clamp(
-      input.ratio + roastRatioShift[input.roastLevel] + tasteRatioShift[input.tasteGoal],
-      14,
-      18,
-    ),
+    clamp(baseRatio + roastRatioShift[input.roastLevel] + tasteRatioShift[input.tasteGoal], 14, 18),
   )
+
+  const baseTempByMethod: Record<BrewMethod, number> = {
+    V60: 94,
+    'Kalita Wave': 94,
+    Chemex: 95,
+  }
+  const baseTemp = input.waterTempC ?? baseTempByMethod[input.method]
   const adjustedTemp = Math.round(
     clamp(
-      input.waterTempC +
+      baseTemp +
         roastTempShift[input.roastLevel] +
-        tasteTempShift[input.tasteGoal],
+        tasteTempShift[input.tasteGoal] +
+        experienceTempShift[experience],
       88,
       97,
     ),
   )
+
   const totalWater = Math.round(normalizedDose * adjustedRatio)
-  const bloomWater = Math.round(
-    clamp(Math.max(normalizedDose * 2.2, totalWater * 0.18), 30, 85),
-  )
+  const bloomWater = Math.round(clamp(Math.max(normalizedDose * 2.2, totalWater * 0.18), 30, 85))
 
   return {
     title: `${input.method} Recipe | ${input.tasteGoal.toUpperCase()} focus`,
